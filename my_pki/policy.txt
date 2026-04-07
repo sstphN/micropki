@@ -1,0 +1,6 @@
+Certificate Policy Document for MicroPKI Root CA
+CA Name: /CN=MicroPKI Root CA/O=MyOrganization/C=RU
+Certificate Serial Number: 0xaaae6329d5939c6b0ce31a327f90c0e3a354e2
+Validity Period: 2026-04-07 05:51:03 to 2036-04-04 05:51:03
+Key Algorithm: RSA 4096
+Purpose: Root CA for MicroPKI demonstration
