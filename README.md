@@ -32,8 +32,9 @@ micropki/
 go mod tidy
 go build -o micropki ./cmd/micropki/
 ```
-Использование
-Инициализация Root CA
+
+# Использование
+
 
 # Создайте файл с паролем для ключа
 ```
