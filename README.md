@@ -24,44 +24,52 @@ micropki/
 │   └── logger/            # Настройка логирования
 ├── go.mod                 # Управление зависимостями Go
 └── README.md
-
+```
 Установка
 Для сборки требуется Go версии 1.21 или выше.
-```go mod tidy
+```
+go mod tidy
 go build -o micropki ./cmd/micropki/
 ```
 Использование
 Инициализация Root CA
 
 # Создайте файл с паролем для ключа
+```
 echo "your_secure_password" > pass.txt
+```
 
-# Инициализируйте CA
+# Инициализация CA
+```
 ./micropki ca init \
     --subject "/CN=MicroPKI Root CA/O=Organization/C=RU" \
     --passphrase-file pass.txt \
     --out-dir ./pki \
     --key-type rsa \
     --validity-days 3650
+```    
 
 
 Параметры команды ca init
 
-Флаг,Описание,Значение по умолчанию
---subject,Данные владельца (DN),Обязательно
---passphrase-file,Путь к файлу с паролем,Обязательно
---key-type,Тип ключа (rsa или ecc),rsa
---out-dir,Директория для файлов,./pki
---validity-days,Срок действия (в днях),3650
+Аргумент,Описание,Пример
+--subject,Имя владельца (DN),/CN=My Root CA
+--key-type,Тип ключа (rsa / ecc),rsa
+--passphrase-file,Файл с паролем для ключа,./pass.txt
+--out-dir,Директория вывода,./pki
+--validity-days,Срок действия в днях,3650
 
 
 Тестирование командой:
+```
 go test -v ./internal/...
+```
 
 Проверка сертификата (OpenSSL)
-
+```
 # Проверка данных сертификата
 openssl x509 -in ./pki/certs/ca.cert.pem -text -noout
 
 # Проверка приватного ключа
 openssl pkey -in ./pki/private/ca.key.pem -text -noout
+```
